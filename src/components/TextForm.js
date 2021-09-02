@@ -7,16 +7,19 @@ export default function TextForm(props) {
         //console.log("Uppercase was clicked: " + text);
         let newText = text.toUpperCase();
         setText(newText)
+        props.showAlert("converted to uppercase!", "success");  
     }
     const handleLoClick = ()=>{
         //console.log("Uppercase was clicked: " + text);
         let newText = text.toLowerCase();
         setText(newText)
+        props.showAlert("converted to lowercase!", "success");
     }
     const handleClearClick = ()=>{
         //console.log("Uppercase was clicked: " + text);
         let newText = "";
         setText(newText)
+        props.showAlert("text cleared!", "success");
     }
     const handleOnChange = (event)=>{
         //console.log("On change");
@@ -27,14 +30,17 @@ export default function TextForm(props) {
         var text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Copied to Clipboard!", "success");
     }
     const handleExtraSpaces = ()=>{
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "));
+        props.showAlert("Extra spaces removed!", "success");
     }
     const handleSentenceCase =()=>{
         let newText = text.charAt(0).toUpperCase() + text.slice(1);
                 setText(newText);
+                props.showAlert("changed to Sentence case!", "success");
     }
     const titleCase = ()=>{
         const arr = text.split(" ");
@@ -43,6 +49,7 @@ export default function TextForm(props) {
         }
         const newText = arr.join(" ");
         setText(newText);
+        props.showAlert("changed to Title case!", "success");
     }
 
 
